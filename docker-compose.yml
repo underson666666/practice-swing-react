@@ -8,17 +8,19 @@ services:
       context: .
       dockerfile: Dockerfile
     tty: true
-    command: ["npm", "start"]
+    working_dir: /root/practice-swing-react/
+    command: ["bash"]
     ports:
       - 3000:3000
     networks:
       - tutorial-network
     volumes:
-      - ./src:/app/
       - lspdatas:/root/.local/share/
+      - practiceReact:/root/practice-swing-react/
+      - ~/.ssh:/root/.ssh:ro
 
 volumes:
-  modules:
   lspdatas:
+  practiceReact:
 networks:
   tutorial-network:
