@@ -18,6 +18,7 @@ services:
       - lspdatas:/root/.local/share/
       - practiceReact:/root/practice-swing-react/
       - ~/.ssh:/root/.ssh:ro
+      - ~/.gitconfig:/root/.gitconfig:ro
 
 volumes:
   lspdatas:
