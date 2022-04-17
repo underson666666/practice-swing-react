@@ -12,6 +12,21 @@
                     "name": "link name",
                     "url": "https://google.co.jp/",
                     "description": "this is description."
+                },
+                {
+                    "legendName": "legend name",
+                    "linkList": [
+                        {
+                            "name": "link name",
+                            "url": "https://google.co.jp/",
+                            "description": "this is description."
+                        },
+                        {
+                            "name": "link name",
+                            "url": "https://google.co.jp/",
+                            "description": "this is description."
+                        }
+                    ]
                 }
             ]
         },
@@ -31,5 +46,4 @@
             ]
         }
     ]
-
 }

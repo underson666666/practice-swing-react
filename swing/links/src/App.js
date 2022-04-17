@@ -13,41 +13,48 @@ function Item(props) {
     </li>
   );
 }
+
 function ItemBox(props) {
-  return <ul>{props.items}</ul>;
+  const items = [];
+  for (const item of props.items) {
+    if (item.legendName) {
+      items.push(
+        <Legend legendName={item.legendName} itemList={item.linkList} />
+      );
+      continue;
+    }
+
+    items.push(
+      <Item url={item.url} name={item.name} description={item.description} />
+    );
+  }
+
+  return <ul>{items}</ul>;
 }
+
 function Legend(props) {
   return (
     <fieldset>
       <legend>{props.legendName}</legend>
-      {props.itemBox}
+      <ItemBox items={props.itemList} />
     </fieldset>
   );
 }
+
 class Link extends React.Component {
-  parse() {
+  createLinks() {
     const legends = [];
     for (const data of Data.datas) {
-      const lis = [];
-      for (const linkData of data.linkList) {
-        const l = (
-          <Item
-            url={linkData.url}
-            name={linkData.name}
-            description={linkData.description}
-          />
-        );
-        lis.push(l);
-      }
-      const box = <ItemBox items={lis} />;
-      const legend = <Legend legendName={data.legendName} itemBox={box} />;
+      const legend = (
+        <Legend legendName={data.legendName} itemList={data.linkList} />
+      );
       legends.push(legend);
     }
     return <div>{legends}</div>;
   }
 
   render() {
-    const linkDatas = this.parse();
+    const linkDatas = this.createLinks();
     return <div>{linkDatas}</div>;
   }
 }
